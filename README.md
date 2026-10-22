@@ -1,84 +1,63 @@
 <div align="center">
 
-  <h1><code>wasm-pack-template</code></h1>
+  <h1><code>wasm-game-of-life</code></h1>
 
-  <strong>A template for kick starting a Rust and WebAssembly project using <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>.</strong>
-
-  <p>
-    <a href="https://travis-ci.org/rustwasm/wasm-pack-template"><img src="https://img.shields.io/travis/rustwasm/wasm-pack-template.svg?style=flat-square" alt="Build Status" /></a>
-  </p>
+  <strong>A modern, up-to-date implementation of the Rust + WebAssembly Game of Life tutorial, using <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a> and <a href="https://vitejs.dev/">Vite</a>.</strong>
 
   <h3>
-    <a href="https://rustwasm.github.io/docs/wasm-pack/tutorials/npm-browser-packages/index.html">Tutorial</a>
+    <a href="https://rustwasm.github.io/docs/book/game-of-life/introduction.html">Official Book Tutorial</a>
     <span> | </span>
-    <a href="https://discordapp.com/channels/442252698964721669/443151097398296587">Chat</a>
+    <a href="https://discordapp.com/channels/442252698964721669/443151097398296587">Rust Wasm Discord</a>
   </h3>
 
-  <sub>Built with 🦀🕸 by <a href="https://rustwasm.github.io/">The Rust and WebAssembly Working Group</a></sub>
+  <sub>Built with 🦀🕸 by <a href="https://rustwasm.github.io/">The Rust and WebAssembly Working Group</a> (Modernized)</sub>
 </div>
 
 ## About
 
-[**📚 Read this template tutorial! 📚**][template-docs]
+This project follows the official [Rust WebAssembly Game of Life book](https://rustwasm.github.io/docs/book/game-of-life/introduction.html), but with a **modernized frontend toolchain**. 
 
-This template is designed for compiling Rust libraries into WebAssembly and
-publishing the resulting package to NPM.
+The official tutorial's JavaScript template relies on Webpack 4, which is incompatible with modern Node.js (v18+) due to the removal of internal APIs like `http_parser`. This repository replaces that legacy setup with **Vite**, providing:
+- Full compatibility with modern Node.js (v18, v20, v22+)
+- Lightning-fast Hot Module Replacement (HMR)
+- Native ES Module support without complex bundler plugins
+- A cleaner, more maintainable development workflow
 
-Be sure to check out [other `wasm-pack` tutorials online][tutorials] for other
-templates and usages of `wasm-pack`.
+## Usage
 
-[tutorials]: https://rustwasm.github.io/docs/wasm-pack/tutorials/index.html
-[template-docs]: https://rustwasm.github.io/docs/wasm-pack/tutorials/npm-browser-packages/index.html
+1. Build the Rust WebAssembly Code
+   From the root of the project, compile the Rust code into WebAssembly with the web target (run this anytime you modify the Rust code in src/):
+   wasm-pack build --target web
 
-## 🚴 Usage
+2. Install Frontend Dependencies
+   Navigate to the www directory and install the modern JavaScript tooling:
+   cd www
+   npm install
 
-### 🐑 Use `cargo generate` to Clone this Template
+3. Start the Development Server
+   Still in the www directory, start the Vite development server:
+   npm run dev
+   Open the provided URL (usually http://localhost:5173) in your browser. Vite will automatically hot-reload when you rebuild the Rust code.
 
-[Learn more about `cargo generate` here.](https://github.com/ashleygwilliams/cargo-generate)
+4. Build for Production
+   To generate an optimized, production-ready bundle:
+   npm run build
+   npm run preview
 
-```
-cargo generate --git https://github.com/rustwasm/wasm-pack-template.git --name my-project
-cd my-project
-```
+## Batteries Included
 
-### 🛠️ Build with `wasm-pack build`
-
-```
-wasm-pack build
-```
-
-### 🔬 Test in Headless Browsers with `wasm-pack test`
-
-```
-wasm-pack test --headless --firefox
-```
-
-### 🎁 Publish to NPM with `wasm-pack publish`
-
-```
-wasm-pack publish
-```
-
-## 🔋 Batteries Included
-
-* [`wasm-bindgen`](https://github.com/rustwasm/wasm-bindgen) for communicating
-  between WebAssembly and JavaScript.
-* [`console_error_panic_hook`](https://github.com/rustwasm/console_error_panic_hook)
-  for logging panic messages to the developer console.
-* `LICENSE-APACHE` and `LICENSE-MIT`: most Rust projects are licensed this way, so these are included for you
+- `wasm-bindgen`: For seamless, type-safe communication between WebAssembly and JavaScript.
+- `console_error_panic_hook`: For logging Rust panic messages directly to the browser's developer console.
+- `Vite`: A modern, blazing-fast frontend build tool that natively supports WebAssembly via ES modules, replacing legacy Webpack setups.
 
 ## License
 
-Licensed under either of
-
-* Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
-* MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+Licensed under either of:
+- Apache License, Version 2.0, (LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0)
+- MIT license (LICENSE-MIT or http://opensource.org/licenses/MIT)
 
 at your option.
 
 ### Contribution
 
-Unless you explicitly state otherwise, any contribution intentionally
-submitted for inclusion in the work by you, as defined in the Apache-2.0
-license, shall be dual licensed as above, without any additional terms or
-conditions.
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
