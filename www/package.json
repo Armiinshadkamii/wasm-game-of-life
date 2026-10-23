@@ -1,0 +1,15 @@
+{
+  "name": "wasm-game-of-life-www",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Modern Vite-based frontend for wasm-game-of-life",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.21"
+  }
+}
