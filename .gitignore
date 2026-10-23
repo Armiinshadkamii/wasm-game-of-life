@@ -4,3 +4,16 @@ Cargo.lock
 bin/
 pkg/
 wasm-pack.log
+
+pkg/
+
+# Node.js
+www/node_modules/
+www/dist/
+www/package-lock.json
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
